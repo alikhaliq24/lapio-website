@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lapio — Get More Google Reviews, Automatically</title>
+  <meta name="description" content="Send personalized review requests, automate follow-ups, and respond with AI. lapio puts your Google reputation on autopilot." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="/" class="logo">
+      <svg width="34" height="38" viewBox="0 0 34 38" fill="none">
+        <circle cx="17" cy="16" r="15" fill="#F5A623"/>
+        <path d="M5 30 C8 33 13 36 17 37 L15 24 Z" fill="#F5A623"/>
+        <path d="M11 16 Q17 23 23 16" stroke="white" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="logo-text">lapio</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="nav-login">Log in</a>
+      <a href="#waitlist" class="btn-primary btn-sm">Join Waitlist</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow">Google Review Management</p>
+      <h1>Reviews that <em>build</em> your<br>business. Sent<br>automatically.</h1>
+      <p class="hero-sub">lapio sends personalized SMS review requests after every job, follows up with non-responders, and replies to every review with AI, while you stay focused on the work.</p>
+      <div class="hero-ctas">
+        <a href="#waitlist" class="btn-primary">Get Early Access →</a>
+        <a href="#how" class="btn-text-link">
+          <span class="play-circle">
+            <svg width="11" height="12" viewBox="0 0 11 12" fill="white"><polygon points="2,1 10,6 2,11"/></svg>
+          </span>
+          See how it works
+        </a>
+      </div>
+      <div class="hero-trust-bar">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>First 2 months free</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No credit card required</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Setup in under 20 minutes</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="phone-wrap">
+        <div class="iphone">
+          <div class="iphone-notch"></div>
+          <div class="iphone-screen">
+            <div class="iphone-status">
+              <span>9:41</span>
+              <div class="iphone-icons">
+                <svg width="15" height="11" viewBox="0 0 15 11" fill="#111"><rect x="0" y="4" width="3" height="7" rx="1"/><rect x="4" y="2" width="3" height="9" rx="1"/><rect x="8" y="0" width="3" height="11" rx="1"/><rect x="12" y="0" width="3" height="11" rx="1" opacity=".3"/></svg>
+                <div style="width:24px;height:12px;border:1.5px solid #111;border-radius:3px;display:flex;align-items:center;padding:2px;"><div style="width:65%;height:100%;background:#111;border-radius:1px"></div></div>
+              </div>
+            </div>
+            <div class="ims-header">
+              <div class="ims-back">‹</div>
+              <div class="ims-contact">
+                <div class="ims-avatar">
+                  <svg width="20" height="22" viewBox="0 0 34 38" fill="none"><circle cx="17" cy="16" r="15" fill="#F5A623"/><path d="M5 30 C8 33 13 36 17 37 L15 24 Z" fill="#F5A623"/><path d="M11 16 Q17 23 23 16" stroke="white" stroke-width="2.6" stroke-linecap="round" fill="none"/></svg>
+                </div>
+                <div><strong>lapio</strong><span>Text Message</span></div>
+              </div>
+            </div>
+            <div class="ims-body">
+              <div class="ims-time-label">Today 2:34 PM</div>
+              <div class="ims-bubble ims-out">Hi Sarah! Thanks for choosing us for your plumbing repair today. We'd love a quick Google review if you have a moment 😊</div>
+              <div class="ims-link-card">
+                <div class="ims-link-icon">⭐</div>
+                <div class="ims-link-text"><strong>Leave a Google Review</strong><span>g.co/lapio-plumbing</span></div>
+              </div>
+              <div class="ims-time-label">2:41 PM · Delivered</div>
+              <div class="ims-bubble ims-in">Done! You came same day and fixed everything. 5 stars 🙌</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-notif">
+          <div class="notif-g-icon">G</div>
+          <div class="notif-body">
+            <strong>New 5-star review</strong>
+            <span>Sarah just posted on Google</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATION STRIP -->
+<div class="strip" id="integrations">
+  <div class="container strip-inner">
+    <p class="strip-label">Works with your existing tools</p>
+    <div class="strip-logos">
+      <div class="sl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Jobber</div>
+      <div class="sl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>QuickBooks</div>
+      <div class="sl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Housecall Pro</div>
+      <div class="sl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>ServiceTitan</div>
+      <div class="sl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Zapier</div>
+      <div class="sl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Business</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="how-header">
+      <p class="section-eyebrow">Simple Process</p>
+      <h2 class="section-h2">Up and running<br>in under 20 minutes</h2>
+    </div>
+
+    <div class="how-grid">
+
+      <div class="how-step" data-reveal>
+        <div class="how-step-top">
+          <div class="how-icon-ring">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <h3>Connect your tools</h3>
+          <p>Link your CRM or import a customer list. Works out of the box with 20+ field service platforms.</p>
+        </div>
+        <div class="how-num" aria-hidden="true">01</div>
+      </div>
+
+      <div class="how-connector" aria-hidden="true">
+        <svg width="64" height="20" viewBox="0 0 64 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 10 Q16 10 28 10" stroke="#F5A623" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>
+          <path d="M36 10 Q48 10 56 10" stroke="#F5A623" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>
+          <path d="M52 4 L62 10 L52 16" stroke="#F5A623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="how-step" data-reveal style="--delay:.12s">
+        <div class="how-step-top">
+          <div class="how-icon-ring">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+          </div>
+          <h3>We send the requests</h3>
+          <p>Personalized SMS & email review requests go out automatically right after each job closes.</p>
+        </div>
+        <div class="how-num" aria-hidden="true">02</div>
+      </div>
+
+      <div class="how-connector" aria-hidden="true">
+        <svg width="64" height="20" viewBox="0 0 64 20" fill="none">
+          <path d="M0 10 Q16 10 28 10" stroke="#F5A623" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>
+          <path d="M36 10 Q48 10 56 10" stroke="#F5A623" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>
+          <path d="M52 4 L62 10 L52 16" stroke="#F5A623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="how-step" data-reveal style="--delay:.24s">
+        <div class="how-step-top">
+          <div class="how-icon-ring">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <h3>Watch ratings climb</h3>
+          <p>New 5-star reviews roll in. AI responds professionally. Your Google ranking improves and more customers find you first.</p>
+        </div>
+        <div class="how-num" aria-hidden="true">03</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FEATURES (INTERACTIVE TABS) ===================== -->
+<section class="tabs-section" id="features">
+  <div class="container">
+    <p class="section-eyebrow">Features</p>
+    <h2 class="section-h2">Everything you need to<br>dominate local search</h2>
+
+    <div class="tabs-layout">
+
+      <!-- Left: Tab list -->
+      <div class="tabs-list" id="tabsList">
+
+        <button class="tab-item active" data-tab="0">
+          <div class="tab-bar"></div>
+          <div class="tab-body">
+            <p class="tab-eyebrow">01 · Review Requests</p>
+            <h3>Sent automatically. Reads like it's personal.</h3>
+            <p>Every message includes your customer's name and the job performed. 3× more responses than a generic blast.</p>
+            <div class="tab-prog-wrap"><div class="tab-prog-bar" id="prog-0"></div></div>
+          </div>
+        </button>
+
+        <button class="tab-item" data-tab="1">
+          <div class="tab-bar"></div>
+          <div class="tab-body">
+            <p class="tab-eyebrow">02 · AI Responses</p>
+            <h3>Every review gets a thoughtful reply.</h3>
+            <p>Our AI reads each review and crafts a unique, professional response in your brand voice, in seconds.</p>
+            <div class="tab-prog-wrap"><div class="tab-prog-bar" id="prog-1"></div></div>
+          </div>
+        </button>
+
+        <button class="tab-item" data-tab="2">
+          <div class="tab-bar"></div>
+          <div class="tab-body">
+            <p class="tab-eyebrow">03 · Analytics</p>
+            <h3>Watch your rating climb in real time.</h3>
+            <p>One dashboard for rating history, campaign performance, and review velocity across all locations.</p>
+            <div class="tab-prog-wrap"><div class="tab-prog-bar" id="prog-2"></div></div>
+          </div>
+        </button>
+
+        <button class="tab-item" data-tab="3">
+          <div class="tab-bar"></div>
+          <div class="tab-body">
+            <p class="tab-eyebrow">04 · Integrations</p>
+            <h3>Plugs right into tools you already use.</h3>
+            <p>Connect Jobber, Housecall Pro, QuickBooks, ServiceTitan and 20+ more, or use Zapier for anything else.</p>
+            <div class="tab-prog-wrap"><div class="tab-prog-bar" id="prog-3"></div></div>
+          </div>
+        </button>
+
+      </div>
+
+      <!-- Right: Preview panels -->
+      <div class="tabs-preview">
+
+        <!-- Panel 0: SMS -->
+        <div class="tab-panel active" id="tab-panel-0">
+          <div class="preview-shell">
+            <div class="sms-card">
+              <div class="sms-card-header">
+                <div class="sms-card-av" style="background:#FEF3C7;color:#92400E;">MP</div>
+                <div class="sms-card-info"><strong>Marcus P.</strong><span>HVAC Tune-up · Completed today</span></div>
+                <span class="sms-chip">SMS</span>
+              </div>
+              <div class="sms-card-messages">
+                <div class="sms-msg sms-out">Hi Marcus! It was a pleasure working on your AC today. Could you take 30 seconds to leave us a Google review?</div>
+                <div class="sms-link-row">
+                  <div class="sms-link-preview">
+                    <span class="sms-star">⭐</span>
+                    <div><strong>Leave a Google Review</strong><span>google.com/maps/…</span></div>
+                  </div>
+                </div>
+                <div class="sms-msg sms-in">Done! You showed up on time and fixed it in an hour 🙌</div>
+              </div>
+              <div class="sms-card-footer">
+                <span class="sms-delivered">✓ Delivered · 2:34 PM</span>
+                <span class="sms-result">New Review!</span>
+              </div>
+            </div>
+            <div class="preview-pill preview-pill--green">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              31% conversion rate
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 1: AI Response -->
+        <div class="tab-panel" id="tab-panel-1">
+          <div class="preview-shell">
+            <div class="ai-card">
+              <div class="ai-review-block">
+                <div class="ai-review-top">
+                  <div class="ai-av" style="background:#DBEAFE;color:#1D4ED8;">SR</div>
+                  <div class="ai-reviewer-info"><strong>Sarah R.</strong><div class="ai-stars">★★★★★</div><span class="ai-date">2 hours ago</span></div>
+                  <div style="font-weight:800;font-size:15px;color:#4285F4;">G</div>
+                </div>
+                <p class="ai-review-quote">"They came out the same day and fixed our leak in under an hour. Extremely professional. Will definitely call again."</p>
+              </div>
+              <div class="ai-response-block">
+                <div class="ai-resp-label"><span class="ai-pulse"></span>AI Response · Generated in 4 seconds</div>
+                <p class="ai-resp-text">"Thank you so much, Sarah! We're thrilled we could get to you quickly. Your satisfaction means everything to us. We look forward to being your go-to plumber!"</p>
+                <div class="ai-resp-actions">
+                  <button class="ai-btn-approve">Approve &amp; Post</button>
+                  <button class="ai-btn-edit">Edit</button>
+                </div>
+              </div>
+            </div>
+            <div class="preview-pill preview-pill--blue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Replied in 4 seconds
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Dashboard -->
+        <div class="tab-panel" id="tab-panel-2">
+          <div class="preview-shell">
+            <div class="dash-card">
+              <div class="dash-header"><strong>Rating Overview</strong><span class="dash-period">Last 90 days</span></div>
+              <div class="dash-score-row">
+                <div class="dash-score">4.9</div>
+                <div class="dash-score-info">
+                  <div class="dash-stars">★★★★★</div>
+                  <div class="dash-trend">↑ from 3.8 six months ago</div>
+                  <div class="dash-count">148 Google Reviews</div>
+                </div>
+              </div>
+              <div class="dash-bars">
+                <div class="dash-bar-row"><span>5★</span><div class="dash-bar-track"><div class="dash-bar-fill" style="width:84%;background:#F5A623"></div></div><span>84%</span></div>
+                <div class="dash-bar-row"><span>4★</span><div class="dash-bar-track"><div class="dash-bar-fill" style="width:12%;background:#FCD34D"></div></div><span>12%</span></div>
+                <div class="dash-bar-row"><span>3★</span><div class="dash-bar-track"><div class="dash-bar-fill" style="width:3%;background:#E5E7EB"></div></div><span>3%</span></div>
+                <div class="dash-bar-row"><span>2★</span><div class="dash-bar-track"><div class="dash-bar-fill" style="width:1%;background:#E5E7EB"></div></div><span>1%</span></div>
+              </div>
+              <div class="dash-kpi-row">
+                <div class="dash-kpi"><div class="dash-kpi-val">31%</div><div class="dash-kpi-lbl">Conversion</div></div>
+                <div class="dash-kpi"><div class="dash-kpi-val">68%</div><div class="dash-kpi-lbl">Open rate</div></div>
+                <div class="dash-kpi"><div class="dash-kpi-val">+29</div><div class="dash-kpi-lbl">This month</div></div>
+              </div>
+            </div>
+            <div class="preview-pill preview-pill--amber">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+              Rating up 1.1★ this month
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Integrations -->
+        <div class="tab-panel" id="tab-panel-3">
+          <div class="preview-shell">
+            <div class="integrations-panel">
+              <div class="int-header">
+                <strong>Connected Integrations</strong>
+                <span class="int-badge">6 active</span>
+              </div>
+              <div class="int-list">
+                <div class="int-item int-item--on"><div class="int-dot"></div><span>Jobber</span><div class="int-status">Syncing</div></div>
+                <div class="int-item int-item--on"><div class="int-dot"></div><span>Google Business Profile</span><div class="int-status">Connected</div></div>
+                <div class="int-item int-item--on"><div class="int-dot"></div><span>Housecall Pro</span><div class="int-status">Syncing</div></div>
+                <div class="int-item int-item--on"><div class="int-dot"></div><span>Zapier</span><div class="int-status">Active</div></div>
+                <div class="int-item"><div class="int-dot int-dot--off"></div><span>QuickBooks</span><div class="int-add">+ Connect</div></div>
+                <div class="int-item"><div class="int-dot int-dot--off"></div><span>ServiceTitan</span><div class="int-add">+ Connect</div></div>
+              </div>
+              <div class="int-footer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Last synced: 2 minutes ago
+              </div>
+            </div>
+            <div class="preview-pill preview-pill--green">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              20+ native integrations
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STATS (INDUSTRY DATA) ===================== -->
+<div class="stats-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 80L1440 0V80H0Z" fill="#0F172A"/>
+  </svg>
+</div>
+
+<section class="stats-section">
+  <div class="container stats-inner">
+    <div class="stats-left">
+      <p class="stats-eyebrow">Why It Matters</p>
+      <h2>Google reviews are the<br>new word of mouth</h2>
+      <p class="stats-sub">Your rating is the first thing a potential customer sees. These numbers explain why it's the highest-leverage thing you can improve.</p>
+    </div>
+    <div class="stats-right">
+      <div class="stat-block" data-reveal-stat>
+        <div class="stat-num" data-counter data-target="93" data-suffix="%">93%</div>
+        <div class="stat-desc">of consumers read reviews before making a purchase</div>
+        <div class="stat-source">BrightLocal, 2024</div>
+      </div>
+      <div class="stat-block" data-reveal-stat style="--delay:.1s">
+        <div class="stat-num" data-counter data-target="57" data-suffix="%">57%</div>
+        <div class="stat-desc">of all online reviews are on Google, more than any other platform</div>
+        <div class="stat-source">ReviewTrackers</div>
+      </div>
+      <div class="stat-block" data-reveal-stat style="--delay:.2s">
+        <div class="stat-num" data-counter data-target="9" data-prefix="+" data-suffix="%">+9%</div>
+        <div class="stat-desc">revenue increase for every 1-star improvement in your rating</div>
+        <div class="stat-source">Harvard Business Review</div>
+      </div>
+      <div class="stat-block" data-reveal-stat style="--delay:.3s">
+        <div class="stat-num" data-counter data-target="88" data-suffix="%">88%</div>
+        <div class="stat-desc">of people trust online reviews as much as personal recommendations</div>
+        <div class="stat-source">Nielsen, 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BEFORE / AFTER ===================== -->
+<section class="ba-section">
+  <div class="container">
+    <p class="section-eyebrow">The Difference</p>
+    <h2 class="section-h2">Stop losing customers to<br>better-reviewed competitors</h2>
+    <p class="ba-sub">Most businesses rely on customers remembering to leave a review. Most don't. lapio fixes that automatically.</p>
+
+    <div class="ba-grid">
+
+      <div class="ba-card ba-card--before" data-ba-reveal>
+        <div class="ba-card-label">
+          <div class="ba-label-dot ba-label-dot--gray"></div>
+          <span>Without lapio</span>
+        </div>
+        <ul class="ba-list">
+          <li>
+            <div class="ba-icon ba-icon--x">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div><strong>Manually asking customers</strong><p>Or forgetting entirely after a long day on the job.</p></div>
+          </li>
+          <li>
+            <div class="ba-icon ba-icon--x">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div><strong>Competitors pulling ahead</strong><p>While your review count stays flat, theirs grows every week.</p></div>
+          </li>
+          <li>
+            <div class="ba-icon ba-icon--x">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div><strong>Unanswered reviews</strong><p>Silence looks like you don't care, damaging trust with future customers.</p></div>
+          </li>
+          <li>
+            <div class="ba-icon ba-icon--x">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div><strong>No visibility into what's working</strong><p>No data on which jobs, techs, or campaigns drive the most reviews.</p></div>
+          </li>
+          <li>
+            <div class="ba-icon ba-icon--x">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div><strong>Paying for ads to compensate</strong><p>Spending to overcome a weak reputation that automation could fix for pennies.</p></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="ba-card ba-card--after" data-ba-reveal style="--delay:.15s">
+        <div class="ba-card-label">
+          <div class="ba-label-dot ba-label-dot--amber"></div>
+          <span>With lapio</span>
+        </div>
+        <ul class="ba-list">
+          <li>
+            <div class="ba-icon ba-icon--check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div><strong>Requests sent after every job</strong><p>Personalized, timed perfectly, without you thinking about it.</p></div>
+          </li>
+          <li>
+            <div class="ba-icon ba-icon--check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div><strong>Consistent review velocity</strong><p>New 5-star reviews rolling in every week, building a moat around your reputation.</p></div>
+          </li>
+          <li>
+            <div class="ba-icon ba-icon--check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div><strong>Every review answered</strong><p>AI crafts a professional, on-brand reply within minutes of posting.</p></div>
+          </li>
+          <li>
+            <div class="ba-icon ba-icon--check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div><strong>Clear analytics dashboard</strong><p>See your rating trend, open rates, and conversion data in one place.</p></div>
+          </li>
+          <li>
+            <div class="ba-icon ba-icon--check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div><strong>Customers find you organically</strong><p>Higher ratings and more reviews push you up in Google Maps, for free.</p></div>
+          </li>
+        </ul>
+        <a href="#waitlist" class="ba-cta">Join the Waitlist →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WAITLIST ===================== -->
+<section class="waitlist-section" id="waitlist">
+  <div class="container waitlist-inner">
+    <p class="section-eyebrow">Early Access</p>
+    <h2 class="section-h2">Get 2 months free.<br>Be first to launch.</h2>
+    <p class="section-sub">lapio is launching soon. Join the waitlist and lock in 2 months free. No credit card needed until you're ready.</p>
+
+    <form class="waitlist-form" id="waitlistForm" novalidate>
+      <div class="wf-row">
+        <div class="wf-field">
+          <label for="wf-name">Full name</label>
+          <input type="text" id="wf-name" name="firstname" placeholder="John Smith" required />
+        </div>
+        <div class="wf-field">
+          <label for="wf-email">Work email</label>
+          <input type="email" id="wf-email" name="email" placeholder="john@mybusiness.com" required />
+        </div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-field">
+          <label for="wf-phone">Phone number</label>
+          <input type="tel" id="wf-phone" name="phone" placeholder="(555) 000-0000" required />
+        </div>
+        <div class="wf-field">
+          <label for="wf-biz">Business name</label>
+          <input type="text" id="wf-biz" name="company" placeholder="Smith Plumbing Co." required />
+        </div>
+      </div>
+      <div class="wf-row wf-row--full">
+        <div class="wf-field">
+          <label for="wf-type">Business type</label>
+          <select id="wf-type" name="business_type" required>
+            <option value="" disabled selected>Select your business type</option>
+            <optgroup label="Healthcare &amp; Wellness">
+              <option>Medical Clinic / Doctor's Office</option>
+              <option>Dental Practice</option>
+              <option>Med Spa / Aesthetics</option>
+              <option>Chiropractic</option>
+              <option>Physical Therapy</option>
+              <option>Mental Health / Therapy</option>
+              <option>Veterinary Clinic</option>
+              <option>Optometry</option>
+            </optgroup>
+            <optgroup label="Home Services">
+              <option>HVAC</option>
+              <option>Plumbing</option>
+              <option>Electrical</option>
+              <option>Roofing</option>
+              <option>Landscaping / Lawn Care</option>
+              <option>Cleaning Services</option>
+              <option>Pest Control</option>
+              <option>Painting</option>
+              <option>General Contracting</option>
+              <option>Pool Service</option>
+              <option>Garage Door / Windows</option>
+            </optgroup>
+            <optgroup label="Beauty &amp; Personal Care">
+              <option>Salon / Barbershop</option>
+              <option>Nail Salon</option>
+              <option>Tattoo Studio</option>
+              <option>Personal Training / Gym</option>
+            </optgroup>
+            <optgroup label="Automotive">
+              <option>Auto Repair / Mechanic</option>
+              <option>Car Detailing</option>
+              <option>Towing</option>
+            </optgroup>
+            <optgroup label="Professional Services">
+              <option>Real Estate Agency</option>
+              <option>Law Firm</option>
+              <option>Accounting / Tax</option>
+              <option>Insurance Agency</option>
+              <option>Marketing Agency</option>
+              <option>IT / Tech Support</option>
+            </optgroup>
+            <optgroup label="Food &amp; Retail">
+              <option>Restaurant / Cafe</option>
+              <option>Retail Store</option>
+              <option>Bakery</option>
+            </optgroup>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="wf-submit-row">
+        <button type="submit" class="btn-primary btn-lg" id="waitlistSubmit">
+          <span class="wf-btn-text">Get Founder Access →</span>
+          <span class="wf-btn-loading" hidden>Submitting…</span>
+        </button>
+      </div>
+      <p class="wf-legal">By signing up you agree to our <a href="terms.html" target="_blank">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>.</p>
+      <p class="wf-error" id="wfError" hidden>Something went wrong. Please try again or email us directly.</p>
+    </form>
+
+    <div class="waitlist-success" id="waitlistSuccess" hidden>
+      <div class="ws-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>You're on the list!</h3>
+      <p>We'll be in touch with early access details and your 2 months free.</p>
+    </div>
+
+    <p class="wf-note">No spam. Just one email when we're ready to launch.</p>
+  </div>
+</section>
+
+<!-- ===================== PRICING ===================== -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <p class="section-eyebrow">Pricing</p>
+    <h2 class="section-h2">Simple, honest pricing</h2>
+    <p class="section-sub">First 2 months free on every plan. No credit card required.</p>
+
+    <div class="billing-row">
+      <span class="billing-lbl">Monthly</span>
+      <button class="toggle-btn" id="billingToggle" aria-checked="false"><span class="toggle-knob"></span></button>
+      <span class="billing-lbl">Annual <strong class="save-chip">Save 17%</strong></span>
+    </div>
+
+    <div class="p-grid">
+      <div class="p-card">
+        <h3>Starter</h3>
+        <div class="p-price"><span class="p-dollar">$</span><span class="p-amount" data-m="79" data-a="66">79</span><span class="p-per">/mo</span></div>
+        <p class="p-desc">Perfect for small businesses just getting started.</p>
+        <a href="#waitlist" class="btn-outline btn-full">Join the Waitlist</a>
+        <ul class="p-list">
+          <li>Up to 50 requests/month</li>
+          <li>SMS &amp; Email campaigns</li>
+          <li>AI review responses</li>
+          <li>1 business location</li>
+          <li>Basic analytics</li>
+          <li>1-on-1 onboarding call</li>
+        </ul>
+      </div>
+
+      <div class="p-card p-card--pop">
+        <div class="p-pop-badge">Most Popular</div>
+        <h3>Growth</h3>
+        <div class="p-price"><span class="p-dollar">$</span><span class="p-amount" data-m="149" data-a="124">149</span><span class="p-per">/mo</span></div>
+        <p class="p-desc">For businesses actively growing their reputation.</p>
+        <a href="#waitlist" class="btn-primary btn-full">Join the Waitlist</a>
+        <ul class="p-list">
+          <li>Up to 150 requests/month</li>
+          <li>Everything in Starter</li>
+          <li>Up to 3 locations</li>
+          <li>Advanced analytics &amp; reports</li>
+          <li>Review reactivation campaigns</li>
+          <li>CRM integrations (Jobber, HCP)</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+
+      <div class="p-card">
+        <h3>Pro</h3>
+        <div class="p-price"><span class="p-dollar">$</span><span class="p-amount" data-m="249" data-a="207">249</span><span class="p-per">/mo</span></div>
+        <p class="p-desc">For multi-location businesses at scale.</p>
+        <a href="#waitlist" class="btn-outline btn-full">Join the Waitlist</a>
+        <ul class="p-list">
+          <li>Unlimited requests</li>
+          <li>Everything in Growth</li>
+          <li>Unlimited locations</li>
+          <li>White-label reports</li>
+          <li>Dedicated account manager</li>
+          <li>Custom API access</li>
+          <li>All CRM integrations</li>
+        </ul>
+      </div>
+    </div>
+    <p class="pricing-note">Need a custom plan? <a href="#">Talk to our team →</a></p>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="faq-section" id="faq">
+  <div class="container faq-wrap">
+    <p class="section-eyebrow">FAQ</p>
+    <h2 class="section-h2">Common questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">How does lapio send review requests?<svg class="faq-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><p>lapio sends personalized review requests via SMS and email on your behalf. Once you connect your CRM or import a customer list, we automatically trigger messages after each job completes. Every message includes your customer's name and a one-tap link directly to your Google review page.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Is this against Google's guidelines?<svg class="faq-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><p>Asking customers for reviews is completely allowed by Google. What Google prohibits is offering incentives or selectively targeting only customers you expect will rate you positively. lapio asks all customers equally and never filters by expected sentiment, keeping you fully compliant.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">What tools do you integrate with?<svg class="faq-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><p>We integrate natively with Jobber, Housecall Pro, QuickBooks, ServiceTitan, and Workiz. We also support Zapier, which connects lapio to thousands of additional tools. If your CRM isn't listed, reach out. We can usually build a custom integration quickly.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">How quickly will I see results?<svg class="faq-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><p>Most customers see their first new reviews within 48 hours. Meaningful rating improvement typically follows within 30–60 days. Your conversion rate depends on message timing and personalization, which our onboarding call is specifically designed to optimize for your business.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Can I customize the messages?<svg class="faq-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><p>Absolutely. You can fully customize both SMS and email templates with your brand voice, business name, and job details. We provide high-converting templates to start with, and our team helps fine-tune them during the 1-on-1 onboarding call included with every plan.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">What happens when my free trial ends?<svg class="faq-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><p>After your 14-day trial you'll be prompted to choose a plan and enter billing details to continue. We'll email you a reminder before the trial ends. No surprises. Cancel anytime, no questions asked, no fees.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section class="cta-section">
+  <div class="container cta-inner">
+    <p class="cta-stars">★★★★★</p>
+    <h2>Start collecting 5-star reviews today</h2>
+    <p>Be among the first to grow your Google reputation with lapio. First 2 months, completely free.</p>
+    <div class="cta-btns">
+      <a href="#waitlist" class="btn-primary btn-lg">Join the Waitlist →</a>
+    </div>
+    <p class="cta-note">No credit card required &nbsp;·&nbsp; First 2 months free &nbsp;·&nbsp; Setup in under 20 minutes</p>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="logo"><svg width="30" height="34" viewBox="0 0 34 38" fill="none"><circle cx="17" cy="16" r="15" fill="#F5A623"/><path d="M5 30 C8 33 13 36 17 37 L15 24 Z" fill="#F5A623"/><path d="M11 16 Q17 23 23 16" stroke="white" stroke-width="2.6" stroke-linecap="round" fill="none"/></svg><span class="logo-text" style="color:#F5A623;">lapio</span></a>
+        <p>The easiest way for growing businesses to collect, manage, and grow their Google reviews, on autopilot.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#integrations">Integrations</a></li><li><a href="#">Changelog</a></li></ul></div>
+      <div class="footer-col"><h4>Industries</h4><ul><li><a href="#">HVAC</a></li><li><a href="#">Plumbing</a></li><li><a href="#">Landscaping</a></li><li><a href="#">Electrical</a></li><li><a href="#">Cleaning</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Case Studies</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 lapio. All rights reserved.</span>
+      <div class="footer-legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
