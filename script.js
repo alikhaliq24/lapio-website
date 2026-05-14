@@ -220,7 +220,7 @@ waitlistForm && waitlistForm.addEventListener('submit', async (e) => {
   };
 
   try {
-    const res = await fetch('/.netlify/functions/submit-waitlist', {
+    const res = await fetch('/api/submit-waitlist', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
