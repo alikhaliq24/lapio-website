@@ -6,7 +6,7 @@ const PROJECT_ID = '1';
 /* ── Project + status filters ── */
 function isForProject(blog) {
   const pid = blog.project_id ?? blog.projectId ?? blog.project ?? null;
-  if (pid === null || pid === undefined) return true; // no field = not filtered
+  if (pid === null || pid === undefined) return true;
   return String(pid) === PROJECT_ID;
 }
 
@@ -19,12 +19,16 @@ function isActive(blog) {
   return sl === 'active' || sl === 'published' || sl === '1' || sl === 'true';
 }
 
-/* ── Field helpers (handle varied API shapes) ── */
+/* ── Field helpers ── */
 function pick(obj, ...keys) {
   for (const k of keys) {
     if (obj[k] !== undefined && obj[k] !== null && obj[k] !== '') return obj[k];
   }
   return null;
+}
+
+function getSlug(blog) {
+  return pick(blog, 'slug') || String(blog.id || blog._id || '');
 }
 
 function getCategory(blog) {
@@ -37,15 +41,11 @@ function getCategory(blog) {
 }
 
 function getExcerpt(blog) {
-  return pick(blog, 'excerpt', 'summary', 'description') || '';
+  return pick(blog, 'excerpt', 'summary', 'description', 'meta_description') || '';
 }
 
 function getImage(blog) {
-  return pick(blog, 'cover_image', 'coverImage', 'image', 'thumbnail', 'featured_image', 'featuredImage');
-}
-
-function getContent(blog) {
-  return pick(blog, 'content', 'body', 'html', 'text') || '';
+  return pick(blog, 'cover_image', 'coverImage', 'image', 'thumbnail', 'featured_image', 'featuredImage', 'meta_image');
 }
 
 function getReadTime(blog) {
@@ -68,6 +68,107 @@ function formatDate(blog) {
   return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 }
 
+/* ── Lexical JSON → HTML renderer ── */
+function lexicalToHtml(raw) {
+  let tree;
+  try {
+    tree = typeof raw === 'string' ? JSON.parse(raw) : raw;
+  } catch {
+    return `<p>${escHtml(raw)}</p>`;
+  }
+  const root = tree?.root || tree;
+  if (!root?.children) return `<p>${escHtml(String(raw))}</p>`;
+  return renderNodes(root.children);
+}
+
+function renderNodes(nodes) {
+  if (!Array.isArray(nodes)) return '';
+  return nodes.map(renderNode).join('');
+}
+
+function renderNode(node) {
+  if (!node) return '';
+  switch (node.type) {
+    case 'paragraph':
+      return `<p>${renderNodes(node.children)}</p>`;
+
+    case 'heading': {
+      const tag = node.tag || 'h2';
+      return `<${tag}>${renderNodes(node.children)}</${tag}>`;
+    }
+
+    case 'text': {
+      let t = escHtml(node.text || '');
+      const fmt = node.format || 0;
+      if (fmt & 1)  t = `<strong>${t}</strong>`;
+      if (fmt & 2)  t = `<em>${t}</em>`;
+      if (fmt & 4)  t = `<s>${t}</s>`;
+      if (fmt & 8)  t = `<u>${t}</u>`;
+      if (fmt & 16) t = `<code>${t}</code>`;
+      return t;
+    }
+
+    case 'linebreak':
+      return '<br>';
+
+    case 'link': {
+      const href = escHtml(node.url || '#');
+      const target = node.target === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : '';
+      return `<a href="${href}"${target}>${renderNodes(node.children)}</a>`;
+    }
+
+    case 'list': {
+      const tag = node.listType === 'number' ? 'ol' : 'ul';
+      return `<${tag}>${renderNodes(node.children)}</${tag}>`;
+    }
+
+    case 'listitem':
+      return `<li>${renderNodes(node.children)}</li>`;
+
+    case 'quote':
+      return `<blockquote>${renderNodes(node.children)}</blockquote>`;
+
+    case 'code': {
+      const lang = node.language ? ` class="language-${escHtml(node.language)}"` : '';
+      return `<pre><code${lang}>${renderNodes(node.children)}</code></pre>`;
+    }
+
+    case 'horizontalrule':
+      return '<hr>';
+
+    case 'image': {
+      const src = escHtml(node.src || '');
+      const alt = escHtml(node.altText || node.alt || '');
+      return src ? `<img src="${src}" alt="${alt}">` : '';
+    }
+
+    default:
+      return renderNodes(node.children);
+  }
+}
+
+/* Try to render content — handles Lexical JSON, plain HTML, and plain text */
+function renderContent(blog) {
+  const raw = pick(blog, 'content', 'body', 'html', 'text');
+  if (!raw) return '';
+  const str = String(raw).trim();
+  if (!str) return '';
+
+  /* Lexical JSON (starts with { or is parseable JSON with a root key) */
+  if (str.startsWith('{') || str.startsWith('[')) {
+    try {
+      const parsed = JSON.parse(str);
+      if (parsed?.root || parsed?.children) return lexicalToHtml(parsed);
+    } catch { /* fall through */ }
+  }
+
+  /* Already HTML */
+  if (/<[a-z][\s\S]*>/i.test(str)) return str;
+
+  /* Plain text — wrap in paragraphs */
+  return str.split(/\n\n+/).map(p => `<p>${escHtml(p.trim())}</p>`).join('');
+}
+
 /* ── Category emoji map ── */
 const CAT_ICONS = {
   default: '📝',
@@ -82,7 +183,7 @@ const CAT_ICONS = {
   'seo': '🔍',
 };
 function catIcon(cat) {
-  return CAT_ICONS[cat.toLowerCase()] || CAT_ICONS.default;
+  return CAT_ICONS[(cat || '').toLowerCase()] || CAT_ICONS.default;
 }
 
 /* ══════════════════════════════════════
@@ -91,12 +192,11 @@ function catIcon(cat) {
 (function initBlogList() {
   const grid       = document.getElementById('blogGrid');
   const filterWrap = document.getElementById('blogFilters');
-  if (!grid) return; // not on this page
+  if (!grid) return;
 
   let allBlogs = [];
   let activeCategory = 'all';
 
-  /* Render 6 skeleton cards while loading */
   grid.innerHTML = Array.from({ length: 6 }, () => `
     <div class="blog-skeleton">
       <div class="skeleton-img"></div>
@@ -114,9 +214,7 @@ function catIcon(cat) {
     .then(r => r.json())
     .then(json => {
       const data = Array.isArray(json) ? json : (json.data || json.blogs || []);
-      allBlogs = data
-        .filter(b => isForProject(b))
-        .filter(b => isActive(b));
+      allBlogs = data.filter(isForProject).filter(isActive);
       buildFilters(allBlogs);
       renderCards(allBlogs);
     })
@@ -132,7 +230,6 @@ function catIcon(cat) {
   function buildFilters(blogs) {
     if (!filterWrap) return;
     const cats = [...new Set(blogs.map(getCategory))].sort();
-    const all = filterWrap.querySelector('[data-category="all"]');
     cats.forEach(cat => {
       const btn = document.createElement('button');
       btn.className = 'filter-btn';
@@ -158,7 +255,7 @@ function catIcon(cat) {
         <div class="blog-empty">
           <div class="blog-empty-icon">${activeCategory === 'all' ? '✍️' : catIcon(activeCategory)}</div>
           <h3>No posts yet</h3>
-          <p>${activeCategory === 'all' ? 'We\'re working on our first posts. Check back soon!' : `No posts in "${activeCategory}" yet.`}</p>
+          <p>${activeCategory === 'all' ? "We're working on our first posts. Check back soon!" : `No posts in "${activeCategory}" yet.`}</p>
         </div>`;
       return;
     }
@@ -166,12 +263,12 @@ function catIcon(cat) {
   }
 
   function blogCard(blog) {
+    const slug     = getSlug(blog);
     const img      = getImage(blog);
     const cat      = getCategory(blog);
     const excerpt  = getExcerpt(blog);
     const date     = formatDate(blog);
     const readTime = getReadTime(blog);
-    const id       = blog.id || blog._id || blog.slug;
 
     const imgHtml = img
       ? `<img class="blog-card-img" src="${escHtml(img)}" alt="${escHtml(blog.title || '')}" loading="lazy">`
@@ -182,7 +279,7 @@ function catIcon(cat) {
     if (readTime) metaParts.push(`<span class="blog-card-meta-dot"></span><span>${readTime} min read</span>`);
 
     return `
-      <a class="blog-card" href="blog-post.html?id=${encodeURIComponent(id)}">
+      <a class="blog-card" href="blog-post.html?slug=${encodeURIComponent(slug)}">
         ${imgHtml}
         <div class="blog-card-body">
           <span class="blog-card-cat">${escHtml(cat)}</span>
@@ -199,19 +296,20 @@ function catIcon(cat) {
 ══════════════════════════════════════ */
 (function initBlogPost() {
   const postWrap = document.getElementById('postContent');
-  if (!postWrap) return; // not on this page
+  if (!postWrap) return;
 
   const params = new URLSearchParams(location.search);
-  const id = params.get('id');
+  const slug = params.get('slug') || params.get('id');
 
-  if (!id) {
-    showPostError('Post not found', 'No post ID was specified.');
+  if (!slug) {
+    showPostError('Post not found', 'No post was specified.');
     return;
   }
 
-  fetch(`${BLOGS_API}/${encodeURIComponent(id)}?project_id=${PROJECT_ID}`)
+  fetch(`${BLOGS_API}/${encodeURIComponent(slug)}`)
     .then(r => r.json())
     .then(json => {
+      if (json.success === false) throw new Error('not found');
       const blog = json.data || json.blog || json;
       if (!blog || (!blog.id && !blog._id && !blog.title)) throw new Error('empty');
       if (!isActive(blog)) {
@@ -221,7 +319,7 @@ function catIcon(cat) {
       renderPost(blog);
     })
     .catch(() => {
-      showPostError('Post not found', 'This post couldn\'t be loaded. It may have been removed.');
+      showPostError('Post not found', "This post couldn't be loaded. It may have been removed.");
     });
 
   function renderPost(blog) {
@@ -230,17 +328,13 @@ function catIcon(cat) {
     const readTime = getReadTime(blog);
     const author   = getAuthor(blog);
     const img      = getImage(blog);
-    const content  = getContent(blog);
     const excerpt  = getExcerpt(blog);
+    const content  = renderContent(blog);
 
-    /* Update <title> */
     document.title = `${blog.title || 'Post'} — lapio Blog`;
-
-    /* Update meta description */
-    let metaDesc = document.querySelector('meta[name="description"]');
+    const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc && excerpt) metaDesc.setAttribute('content', excerpt);
 
-    /* Hero */
     const heroEl = document.getElementById('postHero');
     if (heroEl) {
       heroEl.innerHTML = `
@@ -260,18 +354,16 @@ function catIcon(cat) {
         </div>`;
     }
 
-    /* Cover image */
     const coverEl = document.getElementById('postCover');
-    if (coverEl && img) {
-      coverEl.innerHTML = `<img class="post-cover" src="${escHtml(img)}" alt="${escHtml(blog.title || '')}">`;
+    if (coverEl) {
+      coverEl.innerHTML = img
+        ? `<div class="container"><img class="post-cover" src="${escHtml(img)}" alt="${escHtml(blog.title || '')}"></div>`
+        : '';
     }
 
-    /* Content */
     postWrap.innerHTML = content
       ? `<div class="post-article">${content}</div>`
-      : excerpt
-        ? `<div class="post-article"><p>${escHtml(excerpt)}</p></div>`
-        : `<div class="post-article"><p>No content available.</p></div>`;
+      : `<div class="post-article"><p>No content available.</p></div>`;
   }
 
   function showPostError(title, msg) {
@@ -289,7 +381,7 @@ function catIcon(cat) {
   }
 })();
 
-/* ── Minimal XSS guard for user-facing text ── */
+/* ── XSS guard for user-facing text (not used on raw HTML content) ── */
 function escHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
