@@ -3,6 +3,22 @@
 const BLOGS_API = 'https://katikn.com/api/blogs';
 const PROJECT_ID = '1';
 
+/* ── Project + status filters ── */
+function isForProject(blog) {
+  const pid = blog.project_id ?? blog.projectId ?? blog.project ?? null;
+  if (pid === null || pid === undefined) return true; // no field = not filtered
+  return String(pid) === PROJECT_ID;
+}
+
+function isActive(blog) {
+  const s = blog.status;
+  if (s === undefined || s === null) return true;
+  if (typeof s === 'boolean') return s;
+  if (typeof s === 'number') return s !== 0;
+  const sl = String(s).toLowerCase();
+  return sl === 'active' || sl === 'published' || sl === '1' || sl === 'true';
+}
+
 /* ── Field helpers (handle varied API shapes) ── */
 function pick(obj, ...keys) {
   for (const k of keys) {
@@ -98,7 +114,9 @@ function catIcon(cat) {
     .then(r => r.json())
     .then(json => {
       const data = Array.isArray(json) ? json : (json.data || json.blogs || []);
-      allBlogs = data.filter(b => (b.status || '').toLowerCase() === 'active');
+      allBlogs = data
+        .filter(b => isForProject(b))
+        .filter(b => isActive(b));
       buildFilters(allBlogs);
       renderCards(allBlogs);
     })
@@ -195,8 +213,8 @@ function catIcon(cat) {
     .then(r => r.json())
     .then(json => {
       const blog = json.data || json.blog || json;
-      if (!blog || !blog.id && !blog._id && !blog.title) throw new Error('empty');
-      if ((blog.status || '').toLowerCase() !== 'active') {
+      if (!blog || (!blog.id && !blog._id && !blog.title)) throw new Error('empty');
+      if (!isActive(blog)) {
         showPostError('Post unavailable', 'This post is no longer available.');
         return;
       }
