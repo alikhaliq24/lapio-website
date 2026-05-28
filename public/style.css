@@ -928,3 +928,100 @@ ul { list-style: none; }
   color: #92400E;
   line-height: 1.6;
 }
+
+/* ============================================================
+   FEATURE SECTIONS
+============================================================ */
+
+.features-intro {
+  padding: 96px 0 56px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.feat-section {
+  padding: 96px 0;
+  border-bottom: 1px solid var(--border);
+}
+.feat-section--alt { background: var(--surface); }
+
+.feat-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.feat-layout--reverse .feat-text  { order: 2; }
+.feat-layout--reverse .feat-visual { order: 1; }
+
+.feat-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--amber-h);
+  background: var(--amber-bg);
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.feat-text h3 {
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.feat-text > p {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 28px;
+  max-width: 480px;
+}
+
+.feat-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.feat-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.feat-check-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--amber-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.feat-visual .preview-shell {
+  filter: drop-shadow(0 20px 48px rgba(0,0,0,.1));
+}
+
+@media (max-width: 860px) {
+  .feat-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .feat-layout--reverse .feat-text  { order: 0; }
+  .feat-layout--reverse .feat-visual { order: 0; }
+}
