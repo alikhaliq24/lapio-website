@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enter Details</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f3f4f6;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 56px 16px 80px;
+      color: #111827;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 6px 24px rgba(0,0,0,.07);
+      padding: 52px 48px 48px;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 36px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    label {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: #111827;
+      letter-spacing: 0.01em;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+      font-family: inherit;
+      font-size: 0.9375rem;
+      color: #111827;
+      background: #ffffff;
+      border: 1.5px solid #d1d5db;
+      border-radius: 7px;
+      padding: 11px 14px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      appearance: none;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #9ca3af;
+      font-weight: 400;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #f5a623;
+      box-shadow: 0 0 0 3px rgba(245,166,35,0.15);
+    }
+
+    /* Phone field */
+    .phone-wrapper {
+      display: flex;
+      border: 1.5px solid #d1d5db;
+      border-radius: 7px;
+      overflow: hidden;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .phone-wrapper:focus-within {
+      border-color: #f5a623;
+      box-shadow: 0 0 0 3px rgba(245,166,35,0.15);
+    }
+
+    .phone-prefix {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 12px;
+      background: #f9fafb;
+      border-right: 1.5px solid #d1d5db;
+      white-space: nowrap;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #374151;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .phone-prefix .flag {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .phone-wrapper input[type="tel"] {
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .phone-wrapper input[type="tel"]:focus {
+      box-shadow: none;
+      border-color: transparent;
+    }
+
+    /* Additional Information section */
+    .section-divider {
+      border: none;
+      border-top: 1.5px solid #f3f4f6;
+      margin: 8px 0 20px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 104px;
+      line-height: 1.55;
+    }
+
+    /* Consent row */
+    .consent-wrapper {
+      margin-top: 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .consent-wrapper input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      min-height: 16px;
+      margin-top: 2px;
+      border: 1.5px solid #d1d5db;
+      border-radius: 3px;
+      background: #fff;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      position: relative;
+    }
+
+    .consent-text {
+      font-size: 0.8125rem;
+      color: #4b5563;
+      line-height: 1.65;
+      cursor: default;
+    }
+
+    /* Submit */
+    .btn-submit {
+      margin-top: 28px;
+      width: 100%;
+      background: #f5a623;
+      color: #ffffff;
+      border: none;
+      border-radius: 7px;
+      padding: 14px 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: background 0.15s;
+    }
+
+    .btn-submit:hover {
+      background: #e49618;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 36px 22px 36px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+        margin-bottom: 28px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Enter Details</h1>
+
+    <form>
+
+      <!-- Row 1 + Row 2: two-column grid -->
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label for="first-name">First Name *</label>
+          <input type="text" id="first-name" name="first_name" placeholder="Jane" required />
+        </div>
+
+        <div class="form-group">
+          <label for="last-name">Last Name *</label>
+          <input type="text" id="last-name" name="last_name" placeholder="Smith" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone *</label>
+          <div class="phone-wrapper">
+            <div class="phone-prefix">
+              <span class="flag">🇺🇸</span>
+              <span>+1</span>
+            </div>
+            <input type="tel" id="phone" name="phone" placeholder="(201) 555-0123" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+        </div>
+
+      </div>
+
+      <!-- Additional Information -->
+      <hr class="section-divider" />
+      <p class="section-label">Additional Information</p>
+      <div class="form-group">
+        <textarea id="notes" name="notes" placeholder="Is there anything you would like us to know before your appointment?"></textarea>
+      </div>
+
+      <!-- SMS Consent -->
+      <div class="consent-wrapper">
+        <input type="checkbox" id="sms-consent" name="sms_consent" />
+        <label for="sms-consent" class="consent-text">
+          I Consent to Receive SMS Notifications, Alerts &amp; Occasional Marketing Communication from Company. Message frequency varies. Message &amp; data rates may apply. Text HELP to (850) 600-2205 for assistance. You can reply STOP to unsubscribe at any time.
+        </label>
+      </div>
+
+      <button type="submit" class="btn-submit">Submit</button>
+
+    </form>
+  </div>
+
+</body>
+</html>
